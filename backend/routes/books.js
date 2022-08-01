@@ -19,13 +19,7 @@ bookRouter.post('/addbook',(req,res)=>{
     });
     const book=new Book(newBook);
     book.save();
-    // Book.addBook(newBook,(err,book)=>{
-    //     if(err)
-    //     res.json({success:true,msg:'failed to register the user'});
-    //     else
-    //     res.json({success:false,msg:' Add the user'});
-    // });
-
+    
 });
 
 module.exports=bookRouter;

@@ -17,6 +17,7 @@ import { DeletebookComponent } from './deletebook/deletebook.component';
 import { EditbookComponent } from './editbook/editbook.component';
 
 import { ValidateService } from './validate.service';
+import { AuthService } from './auth.service';
 import { FlashMessagesModule } from 'flash-messages-angular';
 
 
@@ -43,7 +44,7 @@ import { FlashMessagesModule } from 'flash-messages-angular';
     FlashMessagesModule.forRoot()
     
   ],
-  providers: [ValidateService],
+  providers: [ValidateService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

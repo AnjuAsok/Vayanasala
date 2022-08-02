@@ -8,12 +8,12 @@
   <form  class="form col-md-6">
     <div class="form-group">
       <label for="">Email</label>
-      <input type="email" class="form-control">
+      <input type="email" class="form-control"[(ngModel)="email" name="email">
     </div>
     <br>
     <div class="form-group">
       <label for="">Password</label>
-      <input type="password" class="form-control">
+      <input type="password" class="form-control" [(ngModel)]="password" name="password">
     </div>
     <br>
     <button class="btn btn-success">Login</button>

@@ -41,16 +41,16 @@ module.exports=bookRouter;
     about=req.body.about,
     image=req.body.image
 
-    // Book.findByIdAndUpdate({"_id":id},
-    // {$set:{"title":title,
-    //         "auther":auther,
-    //         "about":about,
-    //         "image":image
-    // }}).then(function()
-    // {
-    //     console.log('success');
-    //     res.send();
-    // })
+    Book.findByIdAndUpdate({"_id":id},
+    {$set:{"title":title,
+            "auther":auther,
+            "about":about,
+            "image":image
+    }}).then(function()
+    {
+        console.log('success');
+        res.send();
+    })
 
 });
 

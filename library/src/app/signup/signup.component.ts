@@ -25,13 +25,13 @@ export class SignupComponent implements OnInit {
     //validate register
     if(!this.validateService.validateRegister(user))
     {
-      this.flashMessage.show('please fill all the field',{cssClass:'alert-danger',timeout:3000});
+      this.flashMessage.show('please fill all the field',{cssClass:'alert-danger',timeout:5000});
       return false;
     }
     if(!this.validateService.validateEmail(user.email))
     {
-      console.log();
-      this.flashMessage.show('Enter valid email id',{cssClass:'alert-danger',timeout:3000});
+    
+      this.flashMessage.show('Enter valid email id',{cssClass:'alert-danger',timeout:5000});
       return false
     }
   }

@@ -4,11 +4,11 @@
     <h3>Login</h3>
   </div>
   <br>
-<div class="card-body">
-  <form  class="form col-md-6">
+
+  <form (submit)="onLoginSubmit()" class="form col-md-6">
     <div class="form-group">
       <label for="">Email</label>
-      <input type="email" class="form-control"[(ngModel)="email" name="email">
+      <input type="email" class="form-control"[(ngModel)]="email" name="email">
     </div>
     <br>
     <div class="form-group">
@@ -16,7 +16,6 @@
       <input type="password" class="form-control" [(ngModel)]="password" name="password">
     </div>
     <br>
-    <button class="btn btn-success">Login</button>
+    <button type="submit"class="btn btn-success ">Login</button>
   </form>
-</div>
 </div>

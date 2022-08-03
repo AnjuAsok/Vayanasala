@@ -18,9 +18,9 @@ userRouter.post('/adduser',(req,res,next)=>{
     });
     User.addUser(newUser,(err,user)=>{
         if(err)
-        res.json({success:true,msg:'failed to register the user'});
+        res.json({success:false,msg:'failed to register the user'});
         else
-        res.json({success:false,msg:' Add the user'});
+        res.json({success:true,msg:' Add the user'});
     });
 });
 userRouter.post('/authenticate',(req,res,next)=>{

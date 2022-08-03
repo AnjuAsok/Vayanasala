@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {BookService } from '../book.service';
+import { Router } from '@angular/router';
 
  export class Book{
+  imgwidth:number=50;
   constructor(
       public _id: number,
       public title: string,
@@ -21,7 +23,9 @@ export class BooksComponent implements OnInit {
   
   books:Book[]=[];
 
-  constructor(private bookservice:BookService,private http:HttpClient) { }
+  constructor(private bookservice:BookService,
+    private http:HttpClient,
+    private rooter:Router) { }
 
   ngOnInit(): void {
     this.getBooks();
@@ -33,6 +37,14 @@ export class BooksComponent implements OnInit {
         this.books = response;
       }
     );
+  }
+  toDelete(){
+    
+    
+  }
+  newbook()
+  {
+    this.rooter.navigate(['/addbook']);
   }
 
 }

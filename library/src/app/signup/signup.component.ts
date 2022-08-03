@@ -46,12 +46,14 @@ export class SignupComponent implements OnInit {
     this.authService.registerUser(user).subscribe(data=>{
       
       if(data['success']){
-        this.flashMessage.show('something went wrong ',{cssClass:'alert-danger',timeout:3000})
-        this.router.navigate(['/signup']);
-      }
-      else{
         this.flashMessage.show('You are now registered ',{cssClass:'alert-success',timeout:3000})
         this.router.navigate(['/login']);
+        
+      }
+      else{
+        this.flashMessage.show('something went wrong ',{cssClass:'alert-danger',timeout:3000})
+        this.router.navigate(['/signup']);
+
         
       }
     })

@@ -11,10 +11,17 @@ export class BookService {
   getbooks(){
     return this.http.get("http://localhost:3000/books")
   }
-  addbook(){
-
+  validate(book){
+    if(book.title==undefined||book.auther==undefined||book.about==undefined||book.image==undefined )
+    {
+      return false;
+    }
+    else{
+      return true;
+    }
   }
-  deletebook(){
-    
+  addbook(book){
+    return this.http.post("http://localhost:3000/books/addbook",{"book":book})
   }
+  
 }

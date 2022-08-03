@@ -2,13 +2,17 @@
 <h1>Books</h1><br><br>
 </div>
 <div class="container">
-<a href="../addbook/addbook.component.html">Add New Book</a><br><br>
+  <form (submit)="newbook()">
+  <button type="submit" class="btn btn-primary" >New Book</button>
+</form>
 </div>
+<br><br>
 <div class="container">
   <table class="table table-bordered table-striped">
     <thead>
     <tr>
       <!-- <th>Book</th> -->
+      <th>Book</th>
       <th>Title</th>
       <th>Auther</th>
       <th>About</th>
@@ -16,11 +20,11 @@
     </thead>
     <tbody>
     <tr *ngFor="let book of books">
-      <!-- <td><span>{{book.image}}</span></td> -->
+      <td><span><img [src]='book.image' [style.width.px] ='100'></span></td>
       <td><span>{{book.title}}</span></td>
       <td><span>{{book.auther}}</span></td>
       <td><span>{{book.about}}</span></td>
-      <td><span><button class="btn btn-danger" style="cursor:pointer" > Delete</button></span>
+      <td><span><button  class="btn btn-danger" style="cursor:pointer" > Delete</button></span>
       <span><button class="btn btn-success" style="cursor:pointer" > Edit</button></span></td>
     </tr>
     </tbody>

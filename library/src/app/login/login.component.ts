@@ -29,13 +29,14 @@ export class LoginComponent implements OnInit {
    this.authService.authenticateUser(user).subscribe(data=>{
     console.log(data);
     if(data['success']){
-      this.flashMessage.show('something went wrong ',{cssClass:'alert-danger',timeout:3000})
-      this.router.navigate(['/signup']);
-    }
-    else{
       this.authService.storeUserData(data['token'],data['user']);
       this.flashMessage.show('You are now registered ',{cssClass:'alert-success',timeout:3000})
       this.router.navigate(['/books']);
+    }
+    else{
+      this.flashMessage.show('something went wrong ',{cssClass:'alert-danger',timeout:3000})
+      this.router.navigate(['/signup']);
+      
       
     }
     

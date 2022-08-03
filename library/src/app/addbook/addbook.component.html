@@ -1,18 +1,35 @@
-<div class="container">
-    <form >
-        <div class="mb-3 mt-3">
-          <label for="email" class="form-label">Title:</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-        </div>
-        <div class="mb-3">
-          <label for="pwd" class="form-label">Auther</label>
-          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
-        </div>
-        <div class="mb-3">
-            <label for="pwd" class="form-label">About</label>
-            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
-          </div>
-        
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form> 
+<div class='card'>
+  <form (ngSubmit)="addBook()">
+<div class='card-header'>
+ADD BOOK
+</div>
+<div class='card-body'>            
+<div class='table-responsive'>
+  <table class='table'>       
+  
+    <tbody>  
+        <tr>
+            <td> <label>Title</label></td>
+            <td><input type="text" name="p_id" [(ngModel)]="title"/></td>                  
+          </tr>   
+          <tr>
+              <td><label>Auther</label></td>
+              <td><input type="text" name="p_name" [(ngModel)]="auther"/></td>                  
+            </tr>  
+            <tr>
+              <td><label>About</label></td>
+              <td><input type="text" name="p_code" [(ngModel)]="about"/></td>                  
+            </tr>  
+            <tr>
+              <td><label>Image</label></td>
+              <td><input type="text" name="p_date" [(ngModel)]="image"/></td>                  
+            </tr>  
+            <tr>
+              <td><input type="submit" value="Submit" /></td>                  
+            </tr>             
+    </tbody>
+  </table>
+</div>
+</div>
+</form>
 </div>

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http'
+import { HttpClientModule} from '@angular/common/http';
+import {Router, RouterModule,Routes} from '@angular/router'
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,14 +13,12 @@ import { BooksComponent } from './books/books.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { AddbookComponent } from './addbook/addbook.component';
-import { DeletebookComponent } from './deletebook/deletebook.component';
 import { EditbookComponent } from './editbook/editbook.component';
 
 import { ValidateService } from './validate.service';
 import { AuthService } from './auth.service';
 import { FlashMessagesModule } from 'flash-messages-angular';
-
+import { AddbookComponent } from './addbook/addbook.component';
 
 @NgModule({
   declarations: [
@@ -30,9 +29,9 @@ import { FlashMessagesModule } from 'flash-messages-angular';
     HomeComponent,
     LoginComponent,
     SignupComponent,
-    AddbookComponent,
-    DeletebookComponent,
-    EditbookComponent
+   
+    EditbookComponent,
+    AddbookComponent
     
     
   ],
@@ -41,7 +40,10 @@ import { FlashMessagesModule } from 'flash-messages-angular';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
+    RouterModule,
+    
+
     
   ],
   providers: [ValidateService,AuthService],

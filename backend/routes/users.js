@@ -51,6 +51,21 @@ userRouter.post('/authenticate',(req,res,next)=>{
         });
     });
 });
-
+function verifyToken(req,res,next){
+    if(!req.headers.autherization){
+        return res.status(401).send('unautherised request ');
+    }
+ let token=req.headers.autherization.split('')[1];
+ if(token==null){
+    return res.status(401).send('unautherised request ');
+ }
+ let payload=jwt.verify(token,'secretkey')
+ console.log(payload);
+ if(!payload){
+    return res.status(401).send('unautherised request ');
+ }
+ req.userId=payload.suject;
+ next();
+}
 
 module.exports=userRouter;

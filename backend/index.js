@@ -5,6 +5,7 @@ const mongoose=require('mongoose');
 const passport=require('passport');
 const path=require('path');
 const session=require('express-session');
+const jwt=require('jsonwebtoken');
 
 
 const app=new express();

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import {Router, RouterModule,Routes} from '@angular/router'
 
 
@@ -19,6 +19,7 @@ import { ValidateService } from './validate.service';
 import { AuthService } from './auth.service';
 import { FlashMessagesModule } from 'flash-messages-angular';
 import { AddbookComponent } from './addbook/addbook.component';
+import { TokenInterceptorService } from './token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,12 @@ import { AddbookComponent } from './addbook/addbook.component';
 
     
   ],
-  providers: [ValidateService,AuthService],
+  providers: [ValidateService,AuthService,
+  {
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptorService,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,20 +10,20 @@
             <a class="nav-link " aria-current="page" routerLink="">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="login">Login</a>
+            <a class="nav-link" *ngIf="!authService.login()" routerLink="login">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="signup">SignUp</a>
+            <a class="nav-link" *ngIf="!authService.login()" routerLink="signup">SignUp</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="">LogOut</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="books">Books</a>
+            <a class="nav-link" *ngIf="authService.login()" routerLink="" (click)="onLogoutClick()">LogOut</a>
           </li>
           <!-- <li class="nav-item">
-            <a class="nav-link" routerLink="addbook">NewBook</a>
+            <a class="nav-link" routerLink="books">Books</a>
           </li> -->
+           <li class="nav-item">
+            <a class="nav-link" *ngIf="authService.login()" routerLink="addbook">NewBook</a>
+          </li>
         </ul>
       </div>
     </div>

@@ -16,13 +16,13 @@
             <a class="nav-link" *ngIf="!authService.login()" routerLink="signup">SignUp</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" *ngIf="authService.login()" routerLink="" (click)="onLogoutClick()">LogOut</a>
+            <a class="nav-link" *ngIf="!authService.login()" routerLink="" (click)="onLogoutClick()">LogOut</a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link" routerLink="books">Books</a>
           </li> -->
            <li class="nav-item">
-            <a class="nav-link" *ngIf="authService.login()" routerLink="addbook">NewBook</a>
+            <a class="nav-link" *ngIf="!authService.login()" routerLink="addbook">NewBook</a>
           </li>
         </ul>
       </div>

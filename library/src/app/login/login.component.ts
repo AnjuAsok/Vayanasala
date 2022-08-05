@@ -26,10 +26,9 @@ export class LoginComponent implements OnInit {
       email:this.email,
       password:this.password
     }
-   this.authService.authenticateUser(user).subscribe(data=>{
-    console.log(data);
+   this.authService.authenticateUser(user).subscribe((data)=>{
+
     if(data['success']){
-      this.authService.storeUserData(data['token'],data['user']);
       this.authService.storeUserData(data['token'],data['user']);
       this.flashMessage.show('You are now registered ',{cssClass:'alert-success',timeout:3000})
       this.router.navigate(['/books']);

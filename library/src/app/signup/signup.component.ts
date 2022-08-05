@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  name:String;
-  email:String;
-  password:String;
+ public name:String;
+  public email:String;
+  public password:String;
   constructor(
     private validateService:ValidateService,
     private flashMessage:FlashMessagesService,

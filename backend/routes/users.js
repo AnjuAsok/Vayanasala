@@ -10,6 +10,7 @@ userRouter.get('/',(req,res)=>{
     res.send('User get ')
 });
 
+//signup
 userRouter.post('/adduser',(req,res,next)=>{
     let newUser=new User({
         name:req.body.name,
@@ -23,7 +24,10 @@ userRouter.post('/adduser',(req,res,next)=>{
         res.json({success:true,msg:' Add the user'});
     });
 });
-userRouter.post('/authenticate',(req,res,next)=>{
+
+//login
+userRouter.post('/authenticate',(req,res)=>{
+  
     const email=req.body.email;
     const password=req.body.password;
     User.getUserByEmail(email,(err,user)=>{
@@ -34,38 +38,57 @@ userRouter.post('/authenticate',(req,res,next)=>{
         User.comparePassword(password,user.password,(err,isMatch)=>{
             if(err) throw err;
             if(isMatch){
-                const token=jwt.sign(user.toJSON(),db.secret,{expiresIn:604800});//1 week
+
+                let payload={subject:email+password};
+                let token=jwt.sign(payload,'secretkey');
+                //res.status(200).send({token});
+
                 res.json({
-                    success:true,
-                    token:'jwt'+token,
-                    user:{
-                        id:user._id,
-                        name:user.name,
-                        email:user.email
-                    }
-                });
+                            success:true,
+                            token:'jwt'+token,                        
+                            user:{
+                                    id:user._id,
+                                    name:user.name,
+                                    email:user.email
+                                }
+                        });
             }
-            else{
-                return res.json({success:false,msg:'wrong password'});
-            }
-        });
+                
+                
+});
     });
 });
-function verifyToken(req,res,next){
-    if(!req.headers.autherization){
-        return res.status(401).send('unautherised request ');
-    }
- let token=req.headers.autherization.split('')[1];
- if(token==null){
-    return res.status(401).send('unautherised request ');
- }
- let payload=jwt.verify(token,'secretkey')
- console.log(payload);
- if(!payload){
-    return res.status(401).send('unautherised request ');
- }
- req.userId=payload.suject;
- next();
-}
-
 module.exports=userRouter;
+// function verifyToken(req,res,next){
+//     if(!req.headers.autherization){
+//         return res.status(401).send('unautherised request ');
+//     }
+//  let token=req.headers.autherization.split('')[1];
+//  if(token==null){
+//     return res.status(401).send('unautherised request ');
+//  }
+//  let payload=jwt.verify(token,'secretkey')
+//  console.log(payload);
+//  if(!payload){
+//     return res.status(401).send('unautherised request ');
+//  }
+//  req.userId=payload.suject;
+//  next();
+//}
+
+// const token=jwt.sign(user.toJSON(),db.secret,{expiresIn:604800});//1 week
+//                 res.json({
+//                     success:true,
+//                     token:'jwt'+token,
+//                     user:{
+//                         id:user._id,
+//                         name:user.name,
+//                         email:user.email
+//                     }
+//                 });
+//             }
+//             else{
+//                 return res.json({success:false,msg:'wrong password'});
+//             }
+//         });
+//     });

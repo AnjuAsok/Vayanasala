@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookService } from '../book.service';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'flash-messages-angular';
+import { ValidateService } from '../validate.service';
 
 @Component({
   selector: 'app-addbook',
@@ -14,6 +15,7 @@ export class AddbookComponent implements OnInit {
   about:string;
   image:string;
   constructor(private bookService:BookService,
+    private validateService:ValidateService,
     private router:Router,
     private flashmsg:FlashMessagesService ) { }
 
@@ -26,7 +28,7 @@ export class AddbookComponent implements OnInit {
       about:this.about,
       image:this.image
     }
-    //if(!this.validateService.validateRegister(user))
+    if(!this.validateService.validateRegister(book))
     if(!this.bookService.validate(book))
     {
       this.flashmsg.show('please fill all the field',{cssClass:'alert-danger',timeout:5000});

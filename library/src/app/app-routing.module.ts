@@ -13,7 +13,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'books',component:BooksComponent},
-  {path:'addbook',canActivate:[UserguardGuard],component:AddbookComponent},
+  {path:'addbook',component:AddbookComponent},//canActivate:[UserguardGuard],
   {path:'editbook',component:EditbookComponent}
 ];
 

@@ -1,6 +1,7 @@
 import { Injectable,Injector } from '@angular/core';
 import {HttpClient,HttpHeaders} from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,10 @@ export class AuthService {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
     })}
-    return this.http.post('http://localhost:3000/users/authenticate', user, httpOptions)
-    .pipe(map(res=>res));
+    console.log('enter authservive')
+
+     return this.http.post('http://localhost:3000/users/authenticate', user, httpOptions)
+     .pipe(map(res=>res));
   }
   storeUserData(token,user){
     localStorage.setItem('id_token',token);
@@ -43,7 +46,7 @@ export class AuthService {
   login(){
     return !!localStorage.getItem(this.authToken);
   }
-  grtToken(){
+  getToken(){
     return localStorage.getItem('token');
   }
 }

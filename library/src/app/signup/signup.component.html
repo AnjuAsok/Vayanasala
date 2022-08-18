@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>SignUp</h1>
+    <div class="mt-4 p-5 bg-light text-black rounded">
+    <form (submit)="onSignUpSubmit()">
+        <div class="mb-3 mt-3 form-group">
+            <label for="email"  class="form-label" >Name:</label>
+            <input type="email" class="form-control" id="name"  [(ngModel)]="name" name="name">
+          </div>
+        <div class="mb-3 mt-3 form-group">
+          <label for="email" class="form-label">Email:</label>
+          <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email">
+        </div>
+        <div class="mb-3 form-group">
+          <label for="pwd" class="form-label">Password:</label>
+          <input type="password" class="form-control" id="pwd"[(ngModel)]="password" name="password">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form> 
+      
+      </div>
+    </div>
